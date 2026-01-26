@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Email App</title>
+<style>
+*{margin:0;box-sizing:border-box;font-family:Arial}
+body{height:100vh;display:flex;flex-direction:column;background:#f1f3f4}
+
+/* Top Bar */
+.topbar{
+  height:50px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  padding:0 15px;
+  border-bottom:1px solid #ddd
+}
+.topbar input{
+  margin-left:20px;
+  width:300px;
+  padding:6px
+}
+
+/* Layout */
+.app{flex:1;display:flex}
+
+/* Sidebar */
+.sidebar{
+  width:220px;
+  background:#fff;
+  border-right:1px solid #ddd;
+  padding:10px
+}
+.sidebar button{
+  width:100%;
+  padding:10px;
+  background:#1a73e8;
+  color:white;
+  border:none;
+  margin-bottom:10px;
+}
+.sidebar div{
+  padding:8px;
+  cursor:pointer
+}
+.sidebar div:hover{background:#eee}
+
+/* Inbox */
+.inbox{
+  width:35%;
+  background:#fff;
+  border-right:1px solid #ddd;
+  overflow:auto
+}
+.mail{
+  padding:12px;
+  border-bottom:1px solid #eee;
+  cursor:pointer
+}
+.mail.unread{font-weight:bold}
+.mail:hover{background:#f5f5f5}
+
+/* Email View */
+.view{
+  flex:1;
+  background:#fff;
+  padding:20px
+}
+input,textarea{width:100%;margin-bottom:8px;padding:6px}
+</style>
+</head>
+
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+  📧 <b>Mail</b>
+  <input placeholder="Search mail">
+</div>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <button onclick="compose()">Compose</button>
+    <div>Inbox</div>
+    <div>Sent</div>
+    <div>Drafts</div>
+    <div>Spam</div>
+  </div>
+
+  <!-- Inbox -->
+  <div class="inbox" id="inbox"></div>
+
+  <!-- Email View -->
+  <div class="view" id="view">
+    <p>Select an email</p>
+  </div>
+
+</div>
+
+<script>
+let emails=[
+  {from:"Alice",subject:"Welcome!",body:"Welcome to your inbox.",unread:true},
+  {from:"usagi",subject:"meeting update",body:"meetind at 5pm.",unread:true},
+  {from:"HR",subject:"Policy",body:"Please read policy.",unread:false}
+];
+
+const inbox=document.getElementById("inbox");
+const view=document.getElementById("view");
+
+function loadInbox(){
+  inbox.innerHTML="";
+  emails.forEach((e,i)=>{
+    let d=document.createElement("div");
+    d.className="mail"+(e.unread?" unread":"");
+    d.innerHTML=`${e.from}<br>${e.subject}`;
+    d.onclick=()=>openMail(i);
+    inbox.appendChild(d);
+  });
+}
+
+function openMail(i){
+  emails[i].unread=false;
+  view.innerHTML=`
+    <h2>${emails[i].subject}</h2>
+    <p><b>From:</b> ${emails[i].from}</p>
+    <hr>
+    <p>${emails[i].body}</p>
+  `;
+  loadInbox();
+}
+
+function compose(){
+  view.innerHTML=`
+    <h2>New Message</h2>
+    <input placeholder="To">
+    <input placeholder="Subject">
+    <textarea rows="8" placeholder="Message"></textarea>
+    <button>Send</button>
+  `;
+}
+
+loadInbox();
+</script>
+
+</body>
+</html>
+
+
