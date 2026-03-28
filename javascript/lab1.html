@@ -1,0 +1,318 @@
+ <!DOCTYPE html>
+<html>
+<body>
+    <h2>Add Two Numbers</h2>
+    <input id="n1" placeholder="number1">
+    <input id="n2" placeholder="number2">
+    <button onclick="addNumbers()">Add</button>
+    <p id="result"></p>
+<script>
+    const addNumbers=()=>{
+        const a=Number(document.getElementById("n1").value);
+        const b=Number(document.getElementById("n2").value);
+        document.getElementById("result").innerText="Sum:"+(a+b);
+    };
+</script>
+</body>
+</html> 
+ <html>
+    <body>
+        <h2>simple calculator</h2>
+        <input id="num1" placeholder="number1">
+        <input id="num2" placeholder="number2">
+        <button onclick="add()">+</button>
+        <button onclick="sub()">-</button>
+        <button onclick="mul()">*</button> 
+        <button onclick="div()">/</button>
+        <p id="result"></p>
+    <script>
+        const add=()=>{
+            const a=document.getElementById("num1").value;
+            const b=document.getElementById("num2").value;
+            document.getElementById("result").innerText="Sum:"+(Number(a)+Number(b));
+        }
+        const sub=()=>{
+            const a=document.getElementById("num1").value;
+            const b=document.getElementById("num2").value;
+            document.getElementById("result").innerText="sutraction:"+(Number(a)-Number(b));
+        }
+        const mul=()=>{
+            const a=document.getElementById("num1").value;
+            const b=document.getElementById("num2").value;
+            document.getElementById("result").innerText="multipliation:"+(Number(a)*Number(b));
+        }
+        const div=()=>{
+            const a=document.getElementById("num1").value;
+            const b=document.getElementById("num2").value;
+            document.getElementById("result").innerText="division:"+(Number(a)/Number(b));
+        }
+    </script>
+    </body>
+</html> 
+<!-- task3 -->
+ <html>
+    <body>
+        <h2></h2>
+        <button onclick="ShowAlert()">Show Alert</button>
+    <script>
+        function ShowAlert(){
+            alert("Hello! I am an alert box!");
+        }
+    </script>
+    </body>
+</html> 
+<!-- TASK-4 -->
+ <p id="text">heloo</p>
+<button onclick="changeText()">Change Text</button>
+<script>
+    function changeText(){
+        document.getElementById("text").innerText="welcome to web technologies";
+    }
+</script> 
+<html>
+    <body>
+        <h2>Adding and Removing text from a paragraph</h2>
+        <input id="text" placeholder="type text to add">
+        <button onclick="addText()">Add</button>
+        <button onclick="removeText()">Remove</button>
+        <p id="para">Helo Welcome</p>
+        <script>
+            const enteredText=document.getElementById("text").addEventListener("Add",function(){
+                document.getElementById("para").innerText="to web technologies "+enteredText;
+            });
+            const para=document.getElementById("para").addEventListener("Remove",function(){
+                let words=para.innerText.trim().split(" ");
+                words.pop();
+                para.innerText=words.join(" ");
+            });
+        </script>
+    </body>
+</html> 
+ <html>
+<body>
+    <h2>Adding and Removing text from a paragraph</h2>
+
+    <input id="text" placeholder="type text to add">
+    <button onclick="addText()">Add</button>
+    <button onclick="removeText()">Remove</button>
+
+    <p id="para">Hello Welcome</p>
+
+    <script>
+        function addText() {
+            const inputText = document.getElementById("text").value;
+            const para = document.getElementById("para");
+            para.innerText += " " + inputText;
+        }
+
+        function removeText() {
+            const para = document.getElementById("para");
+            let words = para.innerText.trim().split(" ");
+            words.pop(); // remove last word
+            para.innerText = words.join(" ");
+        }
+    </script>
+</body>
+</html>
+<!-- TASK-5 -->
+<p id="text">heloo world </p>
+<button onclick="changeStyle()">change Style</button>
+<script>
+    function changeStyle(){
+        const element=document.getElementById("text");
+        element.style.color="blue";
+        element.style.fontSize="24px";
+        element.style.backgroundColor="yellow";
+    }
+</script> 
+<p id="text">welcome to web Technologies!</p>
+<button id="btn">Change Style</button>
+<style>
+    .style1{
+        color:green;
+        font-size:30px;
+        background-color:lightgray;
+        padding:10px;
+    }
+    .style2{
+        color:orange;
+        font-size:20px;
+        background-color:blue;
+        padding:15px;
+    }
+</style>
+<script>
+    const text=document.getElementById("text");
+    const btn=document.getElementById("btn");
+    let toggle=true;
+    btn.addEventListener("click",function(){
+        if(toggle){
+            text.className="style1";
+
+        }
+        else{
+            text.className="style2";
+        }
+        toggle=!toggle;
+    });
+    text.className="style1";
+</script> -->
+<p id="text">Change my appearance</p>
+<button onclick="changeStyle()">Change Style</button>
+<script>
+    function changeStyle() {
+        const el = document.getElementById("text");
+        el.style.color = "white"; 
+        el.style.fontSize = "24px"; 
+        el.style.backgroundColor = "blue";
+        el.style.padding = "10px";
+        el.style.borderRadius = "5px";
+    }
+</script> 
+<!-- TASK-6 -->
+ <html>
+    <body>
+        <button id="btn">Click Me!</button>
+        <script>
+            document.getElementById("btn").addEventListener("click",
+                function(){
+                    alert("Button was clicked!");
+                }
+            );
+        </script>
+    </body>
+</html> 
+ <div id="box">Hover over me</div>
+<script>
+    const box = document.getElementById("box");
+    box.onmouseover = function () {
+        box.style.backgroundColor = "lightblue";
+        box.style.color = "white";
+        box.style.transform = "scale(1.1)";
+    };
+    box.onmouseout = function () {
+        box.style.backgroundColor = "gray";
+        box.style.color = "black";
+        box.style.transform = "scale(1)";
+    };
+</script>
+<style>
+    #box {
+        width: 200px;
+        height: 100px;
+        background: gray;
+        text-align: center;
+        line-height: 100px;
+        transition: 0.3s;
+    }
+</style> -->
+ <form id="myform">
+    <input type="text" placeholder="Enter name" required>
+    <button type="submit">Submit</button>
+</form>
+<p id="msg"></p>
+<script>
+    document.getElementById("myform").addEventListener("submit",function(event){
+        event.preventDefault();
+        showMessage();
+    });
+    function showMessage() {
+        document.getElementById("msg").innerText = "Form submitted successfully!";
+    }
+</script> -->
+<!-- TASK-7 -->
+ <html>
+    <body>
+        <input id="name" placeholder="Enter your name"style="display:block;margin-bottom:10px;">
+        <br><br>
+        <button id="btn">Enter</button>
+        <p id="output"></p>
+        <script>
+            document.getElementById("btn").addEventListener("click",function(){
+                let name=document.getElementById("name").value;
+                document.getElementById("output").innerText="Hello "+name+" welcome to the website";
+            });
+        </script>
+    </body>
+</html> -->
+ <html>
+    <head>
+        <title>Form Validation</title>
+        
+         <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded shadow-lg w-96">
+            <h2 class="text-2xl font-bold text-center mb-6">Registration Form</h2>
+            <form id="myform" class="space-y-3">
+            <div>
+                <label class="block font-medium">Name:</label>
+                <input type="text" id="name" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <p id="nameError" class="text-red-500 text-sm"></p>
+            </div>
+            <div>
+                <label class="block font-medium">Email:</label>
+                <input type="email" id="email" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <p id="emailError" class="text-red-500 text-sm"></p>
+            </div> 
+            <div>
+                <label class="block font-medium">Password:</label>
+                <input type="password" id="password" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <p id="passwordError" class="text-red-500 text-sm"></p>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Submit</button>
+            </form>
+        </div>
+        <script>
+            document.getElementById("myform").addEventListener("submit",function(e){
+                e.preventDefault();
+                let isValid=true;
+                let name=document.getElementById("name").value;
+                if(name===""){
+                    isValid=false;
+                    document.getElementById("nameError").innerText="Name is required";
+                }
+                else{
+                    document.getElementById("nameError").innerText="";
+                }
+                let email=document.getElementById("email").value;
+                if(email===""|| !email.includes("@")){
+                    isValid=false;
+                    document.getElementById("emailError").innerText="Valid email is required";
+                }
+                else{
+                    document.getElementById("emailError").innerText="";
+                }
+                let password=document.getElementById("password").value;
+                if(password.length<6){
+                    isValid=false;
+                    document.getElementById("passwordError").innerText="Password must be at least 6 characters long";
+                }
+                else{
+                    document.getElementById("passwordError").innerText="";
+                }
+                if(isValid){
+                    alert("Form submitted successfully!");
+                    document.getElementById("myform").reset();
+                }
+            }
+        );
+        </script>
+    </body>
+</html> -->
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Print Example</title>
+</head>
+<body>
+    <h2>Print this page</h2>
+    <p>This content will be printed.</p>
+    <button onclick="printPage()">Print</button>
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+</html> -->
